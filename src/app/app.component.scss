@@ -1,6 +1,10 @@
 :host {
-  display: block;
+  display: flex;
   margin: 1rem;
+  @media screen and (width > 500px) {
+    max-width: 500px;
+    margin: 1rem auto;
+  }
 }
 
 .content {
