@@ -1,3 +1,72 @@
-<div>Test</div>         
-
-
+<div class="content">
+  <mat-card
+    [formGroup]="fgBasisEingabe"
+    class="padding-1 display-flex gap-1 fd-column"
+  >
+    <mat-form-field
+      appearance="outline"
+      floatLabel="always"
+      subscriptSizing="dynamic"
+      class="width-100p"
+    >
+      <mat-label>Gewicht</mat-label>
+      <input matInput type="number" formControlName="gewicht" />
+    </mat-form-field>
+    <mat-form-field
+      appearance="outline"
+      floatLabel="always"
+      subscriptSizing="dynamic"
+      class="width-100p"
+    >
+      <mat-label>Wiederholungen</mat-label>
+      <input matInput type="number" formControlName="wiederholungen" />
+    </mat-form-field>
+  </mat-card>
+  <mat-card class="padding-1 display-flex gap-1 fd-column">
+    <div class="display-flex fd-column">
+      <span>Intramuskuläre Koordination</span>
+      <div class="display-flex jc-space-between">
+        <span>100%</span>
+        <span>{{ mapProzentualeGewichte.get(100) }}</span>
+      </div>
+      <div class="display-flex jc-space-between">
+        <span>90%</span>
+        <span>{{ mapProzentualeGewichte.get(90) }}</span>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="padding-1 display-flex gap-1 fd-column">
+    <div class="display-flex fd-column">
+      <span>Hypertrophie</span>
+      <div class="display-flex jc-space-between">
+        <span>80%</span>
+        <span>{{ mapProzentualeGewichte.get(80) }}</span>
+      </div>
+      <div class="display-flex jc-space-between">
+        <span>70%</span>
+        <span>{{ mapProzentualeGewichte.get(70) }}</span>
+      </div>
+      <div class="display-flex jc-space-between">
+        <span>60%</span>
+        <span>{{ mapProzentualeGewichte.get(60) }}</span>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="padding-1 display-flex gap-1 fd-column">
+    <div class="display-flex fd-column">
+      <span>Kraftausdauer</span>
+      <div class="display-flex jc-space-between">
+        <span>50%</span>
+        <span>{{ mapProzentualeGewichte.get(50) }}</span>
+      </div>
+      <div class="display-flex jc-space-between">
+        <span>40%</span>
+        <span>{{ mapProzentualeGewichte.get(40) }}</span>
+      </div>
+      <div class="display-flex jc-space-between">
+        <span>30%</span>
+        <span>{{ mapProzentualeGewichte.get(30) }}</span>
+      </div>
+    </div>
+  </mat-card>
+</div>
