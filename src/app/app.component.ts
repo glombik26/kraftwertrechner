@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'kraftwertrechner';
   fgBasisEingabe!: FormGroup;
   mapProzentualeGewichte!: Map<
@@ -35,6 +35,12 @@ export class AppComponent {
     this.selektierbareWiederholungen = Array(25)
       .fill(null)
       .map((x, i) => ++i);
+  }
+
+  ngAfterViewInit(): void {
+    document.querySelectorAll('[type=number]').forEach((element) => {
+      this.hideMobileKeyboardOnReturn(element);
+    });
   }
 
   private initMapProzentualeGewichte(
@@ -117,4 +123,13 @@ export class AppComponent {
     [50, '25'.padStart(2) + ' - ' + '30'.padStart(2)],
     [40, ''.padStart(2) + ' > ' + '30'.padStart(2)],
   ]);
+
+  hideMobileKeyboardOnReturn = (element: any) => {
+    element.addEventListener('keyup', (keyboardEvent: any) => {
+      const key = keyboardEvent.code || keyboardEvent.keyCode;
+      if (key === 'Enter' || key === 13) {
+        element.blur();
+      }
+    });
+  };
 }
