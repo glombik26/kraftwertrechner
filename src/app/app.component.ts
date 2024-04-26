@@ -9,7 +9,10 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
   title = 'kraftwertrechner';
   fgBasisEingabe!: FormGroup;
-  mapProzentualeGewichte!: Map<number, string>;
+  mapProzentualeGewichte!: Map<
+    number,
+    { anzahlWiederholungen: string; gewicht: string }
+  >;
   selektierbareGewichte!: number[];
   selektierbareWiederholungen!: number[];
 
@@ -29,7 +32,7 @@ export class AppComponent {
     this.selektierbareGewichte = Array(20)
       .fill(null)
       .map((x, i) => ++i * 5);
-    this.selektierbareWiederholungen = Array(12)
+    this.selektierbareWiederholungen = Array(25)
       .fill(null)
       .map((x, i) => ++i);
   }
@@ -37,16 +40,22 @@ export class AppComponent {
   private initMapProzentualeGewichte(
     gewicht: number,
     wiederholungen: number,
-  ): Map<number, string> {
+  ): Map<number, { anzahlWiederholungen: string; gewicht: string }> {
     if (gewicht <= 0 || wiederholungen <= 0) return this.getLeereGewichteMap();
-    const result: Map<number, string> = new Map<number, string>();
+    const result: Map<
+      number,
+      { anzahlWiederholungen: string; gewicht: string }
+    > = new Map<number, { anzahlWiederholungen: string; gewicht: string }>();
     const maximalGewicht: number = this.berechneMaximalGewicht(
       gewicht,
       wiederholungen,
     );
 
     for (let i: number = 30; i <= 100; i += 10) {
-      result.set(i, this.berechneProzentualesGewicht(i, maximalGewicht));
+      result.set(i, {
+        anzahlWiederholungen: this.mapAnzahlWiederholungen.get(i) ?? '',
+        gewicht: this.berechneProzentualesGewicht(i, maximalGewicht),
+      });
     }
     return result;
   }
@@ -80,16 +89,32 @@ export class AppComponent {
     this.fgBasisEingabe.controls['wiederholungen'].setValue($value);
   }
 
-  private getLeereGewichteMap(): Map<number, string> {
-    return new Map<number, string>([
-      [100, '0,0'],
-      [90, '0,0'],
-      [80, '0,0'],
-      [70, '0,0'],
-      [60, '0,0'],
-      [50, '0,0'],
-      [40, '0,0'],
-      [30, '0,0'],
+  private getLeereGewichteMap(): Map<
+    number,
+    { anzahlWiederholungen: string; gewicht: string }
+  > {
+    return new Map<number, { anzahlWiederholungen: string; gewicht: string }>([
+      [100, { anzahlWiederholungen: '0', gewicht: '0,0' }],
+      [90, { anzahlWiederholungen: '0', gewicht: '0,0' }],
+      [80, { anzahlWiederholungen: '0', gewicht: '0,0' }],
+      [70, { anzahlWiederholungen: '0', gewicht: '0,0' }],
+      [60, { anzahlWiederholungen: '0', gewicht: '0,0' }],
+      [50, { anzahlWiederholungen: '0', gewicht: '0,0' }],
+      [40, { anzahlWiederholungen: '0', gewicht: '0,0' }],
+      [30, { anzahlWiederholungen: '0', gewicht: '0,0' }],
     ]);
   }
+
+  private readonly mapAnzahlWiederholungen: Map<number, string> = new Map<
+    number,
+    string
+  >([
+    [100, '1'.padStart(2) + ' - ' + '2'.padStart(2)],
+    [90, '3'.padStart(2) + ' - ' + '4'.padStart(2)],
+    [80, '7'.padStart(2) + ' - ' + '9'.padStart(2)],
+    [70, '13'.padStart(2) + ' - ' + '15'.padStart(2)],
+    [60, '20'.padStart(2) + ' - ' + '24'.padStart(2)],
+    [50, '25'.padStart(2) + ' - ' + '30'.padStart(2)],
+    [40, ''.padStart(2) + ' > ' + '30'.padStart(2)],
+  ]);
 }

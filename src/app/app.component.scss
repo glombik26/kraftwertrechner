@@ -23,6 +23,10 @@
   gap: 1rem;
 }
 
+.gap-0_5 {
+  gap: 0.5rem;
+}
+
 .fd-column {
   flex-direction: column;
 }
@@ -65,4 +69,8 @@
     height: 2rem;
     min-width: 40px;
   }
+}
+
+.white-space-pre {
+  white-space: pre;
 }

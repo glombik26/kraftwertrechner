@@ -37,49 +37,72 @@
     </div>
   </mat-card>
   <mat-card class="padding-1 display-flex gap-1 fd-column">
-    <div class="display-flex fd-column">
-      <span>Intramuskuläre Koordination</span>
+    <span>Intramuskuläre Koordination</span>
+    <div class="display-flex gap-0_5 fd-column">
       <div class="display-flex jc-space-between">
-        <span>100%</span>
-        <span>{{ mapProzentualeGewichte.get(100) }} KG</span>
+        <span></span>
+        <span class="white-space-pre">{{ "Wdh.".padEnd(6) }}</span>
+        <span></span>
       </div>
       <div class="display-flex jc-space-between">
-        <span>90%</span>
-        <span>{{ mapProzentualeGewichte.get(90) }} KG</span>
-      </div>
-    </div>
-  </mat-card>
-  <mat-card class="padding-1 display-flex gap-1 fd-column">
-    <div class="display-flex fd-column">
-      <span>Hypertrophie</span>
-      <div class="display-flex jc-space-between">
-        <span>80%</span>
-        <span>{{ mapProzentualeGewichte.get(80) }} KG</span>
+        <span class="white-space-pre">100%</span>
+        <span>{{ mapProzentualeGewichte.get(100)?.anzahlWiederholungen }}</span>
+        <span>{{ mapProzentualeGewichte.get(100)?.gewicht }} KG</span>
       </div>
       <div class="display-flex jc-space-between">
-        <span>70%</span>
-        <span>{{ mapProzentualeGewichte.get(70) }} KG</span>
-      </div>
-      <div class="display-flex jc-space-between">
-        <span>60%</span>
-        <span>{{ mapProzentualeGewichte.get(60) }} KG</span>
+        <span class="white-space-pre">{{ "90%".padStart(4) }}</span>
+        <span>{{ mapProzentualeGewichte.get(90)?.anzahlWiederholungen }}</span>
+        <span>{{ mapProzentualeGewichte.get(90)?.gewicht }} KG</span>
       </div>
     </div>
   </mat-card>
   <mat-card class="padding-1 display-flex gap-1 fd-column">
-    <div class="display-flex fd-column">
-      <span>Kraftausdauer</span>
+    <span>Hypertrophie</span>
+    <div class="display-flex gap-0_5 fd-column">
       <div class="display-flex jc-space-between">
-        <span>50%</span>
-        <span>{{ mapProzentualeGewichte.get(50) }} KG</span>
+        <span></span>
+        <span class="white-space-pre">{{ "Wdh.".padEnd(6) }}</span>
+        <span></span>
       </div>
       <div class="display-flex jc-space-between">
-        <span>40%</span>
-        <span>{{ mapProzentualeGewichte.get(40) }} KG</span>
+        <span class="white-space-pre">{{ "80%".padStart(4) }}</span>
+        <span>{{ mapProzentualeGewichte.get(80)?.anzahlWiederholungen }}</span>
+        <span>{{ mapProzentualeGewichte.get(80)?.gewicht }} KG</span>
       </div>
       <div class="display-flex jc-space-between">
-        <span>30%</span>
-        <span>{{ mapProzentualeGewichte.get(30) }} KG</span>
+        <span class="white-space-pre">{{ "70%".padStart(4) }}</span>
+        <span>{{ mapProzentualeGewichte.get(70)?.anzahlWiederholungen }}</span>
+        <span>{{ mapProzentualeGewichte.get(70)?.gewicht }} KG</span>
+      </div>
+      <div class="display-flex jc-space-between">
+        <span class="white-space-pre">{{ "70%".padStart(4) }}</span>
+        <span>{{ mapProzentualeGewichte.get(70)?.anzahlWiederholungen }}</span>
+        <span>{{ mapProzentualeGewichte.get(70)?.gewicht }} KG</span>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="padding-1 display-flex gap-1 fd-column">
+    <span>Kraftausdauer</span>
+    <div class="display-flex gap-0_5 fd-column">
+      <div class="display-flex jc-space-between">
+        <span></span>
+        <span class="white-space-pre">{{ "Wdh.".padEnd(6) }}</span>
+        <span></span>
+      </div>
+      <div class="display-flex jc-space-between">
+        <span class="white-space-pre">{{ "60%".padStart(4) }}</span>
+        <span>{{ mapProzentualeGewichte.get(60)?.anzahlWiederholungen }}</span>
+        <span>{{ mapProzentualeGewichte.get(60)?.gewicht }} KG</span>
+      </div>
+      <div class="display-flex jc-space-between">
+        <span class="white-space-pre">{{ "50%".padStart(4) }}</span>
+        <span>{{ mapProzentualeGewichte.get(50)?.anzahlWiederholungen }}</span>
+        <span>{{ mapProzentualeGewichte.get(50)?.gewicht }} KG</span>
+      </div>
+      <div class="display-flex jc-space-between">
+        <span class="white-space-pre">{{ "40%".padStart(4) }}</span>
+        <span>{{ mapProzentualeGewichte.get(40)?.anzahlWiederholungen }}</span>
+        <span>{{ mapProzentualeGewichte.get(40)?.gewicht }} KG</span>
       </div>
     </div>
   </mat-card>

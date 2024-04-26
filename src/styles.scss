@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
+* {
+  font-family: Roboto Mono;
+}
+
+.mat-mdc-standard-chip .mdc-evolution-chip__text-label {
+  font-family: Roboto Mono !important;
+}
+
 html, body {}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto Mono, "Helvetica Neue", sans-serif; }
 
 .width-100p {
   width: 100%;
