@@ -56,8 +56,8 @@
   overflow-x: auto;
   display: grid;
   grid-template-rows: 2rem 2rem;
-  grid-template-columns: repeat(6, calc(calc(100% - 1rem) / 6.5));
-  grid-auto-columns: calc(calc(100% - 1rem) / 6.5);
+  grid-template-columns: repeat(6, calc(calc(100% - 6rem) / 6.5));
+  grid-auto-columns: calc(calc(100% - 6rem) / 6.5);
   grid-auto-flow: column;
   gap: 1rem;
 
