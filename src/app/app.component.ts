@@ -9,7 +9,9 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
   title = 'kraftwertrechner';
   fgBasisEingabe!: FormGroup;
-  mapProzentualeGewichte!: Map<number, number>;
+  mapProzentualeGewichte!: Map<number, string>;
+  selektierbareGewichte!: number[];
+  selektierbareWiederholungen!: number[];
 
   constructor(private formBuilder: FormBuilder) {
     this.fgBasisEingabe = this.formBuilder.group({
@@ -24,13 +26,20 @@ export class AppComponent {
       this.fgBasisEingabe.controls['gewicht'].value,
       this.fgBasisEingabe.controls['wiederholungen'].value,
     );
+    this.selektierbareGewichte = Array(20)
+      .fill(null)
+      .map((x, i) => ++i * 5);
+    this.selektierbareWiederholungen = Array(12)
+      .fill(null)
+      .map((x, i) => ++i);
   }
 
   private initMapProzentualeGewichte(
     gewicht: number,
     wiederholungen: number,
-  ): Map<number, number> {
-    const result: Map<number, number> = new Map<number, number>();
+  ): Map<number, string> {
+    if (gewicht <= 0 || wiederholungen <= 0) return this.getLeereGewichteMap();
+    const result: Map<number, string> = new Map<number, string>();
     const maximalGewicht: number = this.berechneMaximalGewicht(
       gewicht,
       wiederholungen,
@@ -43,14 +52,14 @@ export class AppComponent {
   }
 
   private berechneMaximalGewicht(gewicht: number, wiederholungen: number) {
-    return gewicht * 2;
+    return +(gewicht / (1.0278 - 0.0278 * wiederholungen)).toFixed(1);
   }
 
   private berechneProzentualesGewicht(
     prozentsatz: number,
     maximalGewicht: number,
   ) {
-    return (maximalGewicht * prozentsatz) / 100;
+    return ((maximalGewicht * prozentsatz) / 100).toFixed(1);
   }
 
   private handleWiederholungenChange(value: {
@@ -61,5 +70,26 @@ export class AppComponent {
       value.gewicht,
       value.wiederholungen,
     );
+  }
+
+  handleGewichtInKgChipClick($value: number) {
+    this.fgBasisEingabe.controls['gewicht'].setValue($value);
+  }
+
+  handleWiederholungenChipClick($value: number) {
+    this.fgBasisEingabe.controls['wiederholungen'].setValue($value);
+  }
+
+  private getLeereGewichteMap(): Map<number, string> {
+    return new Map<number, string>([
+      [100, '0,0'],
+      [90, '0,0'],
+      [80, '0,0'],
+      [70, '0,0'],
+      [60, '0,0'],
+      [50, '0,0'],
+      [40, '0,0'],
+      [30, '0,0'],
+    ]);
   }
 }

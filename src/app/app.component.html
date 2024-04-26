@@ -9,9 +9,16 @@
       subscriptSizing="dynamic"
       class="width-100p"
     >
-      <mat-label>Gewicht</mat-label>
+      <mat-label>Gewicht in KG</mat-label>
       <input matInput type="number" formControlName="gewicht" />
     </mat-form-field>
+    <div class="chip-container">
+      <mat-chip
+        *ngFor="let gewicht of this.selektierbareGewichte"
+        (click)="this.handleGewichtInKgChipClick(gewicht)"
+        >{{ gewicht }}</mat-chip
+      >
+    </div>
     <mat-form-field
       appearance="outline"
       floatLabel="always"
@@ -21,17 +28,24 @@
       <mat-label>Wiederholungen</mat-label>
       <input matInput type="number" formControlName="wiederholungen" />
     </mat-form-field>
+    <div class="chip-container">
+      <mat-chip
+        *ngFor="let wiederholungen of this.selektierbareWiederholungen"
+        (click)="this.handleWiederholungenChipClick(wiederholungen)"
+        >{{ wiederholungen }}</mat-chip
+      >
+    </div>
   </mat-card>
   <mat-card class="padding-1 display-flex gap-1 fd-column">
     <div class="display-flex fd-column">
       <span>Intramuskuläre Koordination</span>
       <div class="display-flex jc-space-between">
         <span>100%</span>
-        <span>{{ mapProzentualeGewichte.get(100) }}</span>
+        <span>{{ mapProzentualeGewichte.get(100) }} KG</span>
       </div>
       <div class="display-flex jc-space-between">
         <span>90%</span>
-        <span>{{ mapProzentualeGewichte.get(90) }}</span>
+        <span>{{ mapProzentualeGewichte.get(90) }} KG</span>
       </div>
     </div>
   </mat-card>
@@ -40,15 +54,15 @@
       <span>Hypertrophie</span>
       <div class="display-flex jc-space-between">
         <span>80%</span>
-        <span>{{ mapProzentualeGewichte.get(80) }}</span>
+        <span>{{ mapProzentualeGewichte.get(80) }} KG</span>
       </div>
       <div class="display-flex jc-space-between">
         <span>70%</span>
-        <span>{{ mapProzentualeGewichte.get(70) }}</span>
+        <span>{{ mapProzentualeGewichte.get(70) }} KG</span>
       </div>
       <div class="display-flex jc-space-between">
         <span>60%</span>
-        <span>{{ mapProzentualeGewichte.get(60) }}</span>
+        <span>{{ mapProzentualeGewichte.get(60) }} KG</span>
       </div>
     </div>
   </mat-card>
@@ -57,15 +71,15 @@
       <span>Kraftausdauer</span>
       <div class="display-flex jc-space-between">
         <span>50%</span>
-        <span>{{ mapProzentualeGewichte.get(50) }}</span>
+        <span>{{ mapProzentualeGewichte.get(50) }} KG</span>
       </div>
       <div class="display-flex jc-space-between">
         <span>40%</span>
-        <span>{{ mapProzentualeGewichte.get(40) }}</span>
+        <span>{{ mapProzentualeGewichte.get(40) }} KG</span>
       </div>
       <div class="display-flex jc-space-between">
         <span>30%</span>
-        <span>{{ mapProzentualeGewichte.get(30) }}</span>
+        <span>{{ mapProzentualeGewichte.get(30) }} KG</span>
       </div>
     </div>
   </mat-card>

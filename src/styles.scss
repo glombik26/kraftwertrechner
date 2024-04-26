@@ -14,3 +14,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .padding-bottom-0 {
   padding-bottom: 0;
 }
+
+.mat-mdc-standard-chip .mdc-evolution-chip__action--primary {
+  width: 100%;
+  justify-content: center;
+}

@@ -25,6 +25,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCard } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [AppComponent],
@@ -52,7 +53,8 @@ import { MatCard } from '@angular/material/card';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatDatepickerModule,
-    MatCard
+    MatCard,
+    MatChipsModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
